@@ -1,0 +1,6 @@
+{
+    "name": "tgm-hit/medt-webshop",
+    "require": {
+        "propel/propel": "dev-master"
+    }
+}
