@@ -1,0 +1,34 @@
+<php
+require("toro.php");
+
+if ( !file_exists("comments.json") ) {
+	$produkte = [];
+	$daten = [];
+	$daten["ID"] = "1";
+	$daten["name"] = "test";
+	$daten["bewertung"] = "test";
+ 
+	file_put_contents("comments.json", json_encode($produkte));
+}
+
+class ProductHandler {
+	// Sucht produkte
+	function put() {
+		Kunden = json_decode( file_get_contents( "comments.json" ) );
+			if (isset($_POST["ID"])] || isset($_POST["name"])) {
+				$produkte[] = $_POST;
+			}
+		file_put_contents("comments.json", json_encode($produkte));
+		echo "/comment/".count($produkte);
+	}
+}
+
+ToroHook::add("404", function() {
+	echo "Not found";
+});
+
+Toro::serve(array(
+	"/accout/log" => "ProductHandler", //GET - Einlogen
+	"/accout/log/show" => "ProductHandler", //GET - Anzeigen
+));
+?>
