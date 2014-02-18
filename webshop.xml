@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="webshop" defaultIdMethod="native">
+ 
+  
+  <table name="user" phpName="user">
+   <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+   <column name="email" type="varchar" size="300" required="true" />
+   <column name="firstname" type="varchar" size="300" required="false" />
+   <column name="lastname" type="varchar" size="300" required="false" />
+   <column name="pay" type="varchar" size="300" required="false" />
+  </table>
+  
+   <table name="products" phpName="products">
+   <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"  />
+   <column name="beschr" type="varchar" size="400"  />
+  
+  </table>
+  
+  <table name="cart" phpName="cart">
+   <column name="userID" type="integer" required="true" primaryKey="true" />
+   <column name="productID" type="integer" required="true" primaryKey="true"/>
+   
+   
+    <foreign-key foreignTable="user" phpName="user" refPhpName="cart">
+      <reference local="userID" foreign="id"/>
+    </foreign-key>
+	<foreign-key foreignTable="products" phpName="products" refPhpName="cart">
+      <reference local="productID" foreign="id"/>
+    </foreign-key>
+   
+  </table>
+  
+ 
+  
+  
+</database>
