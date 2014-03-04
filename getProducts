@@ -1,4 +1,4 @@
-<php
+<?php
 require("toro.php");
 
 if ( !file_exists("comments.json") ) {
