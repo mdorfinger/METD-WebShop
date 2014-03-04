@@ -1,0 +1,29 @@
+<?php
+foreach ($waren as $id => $produkt) {
+    printf(
+           $produkt['titel'],
+           $produkt['preis'],
+           htmlentities($produkt['text']),
+           $id,
+          );
+}
+
+if (isset($_SESSION['warenkorb']) &&
+   !empty($_SESSION['warenkorb'])) {
+
+    print "Sie haben folgende Waren bereits ausgew&auml;hlt:";
+    print "<ul>";
+    foreach ($_SESSION['warenkorb'] as $id) {
+        printf('<li>
+                %s
+                (<a href="entfernen.php?id=%d&%s">
+                   Entfernen
+                </a>)
+                </li>',
+               htmlentities($waren[$id]['titel']),
+               $id,
+              );
+    }
+    print "</ul>";
+}
+?>
