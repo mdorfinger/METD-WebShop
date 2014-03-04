@@ -1,6 +1,6 @@
 <?php
- 
-require("toro.php");
+
+require 'vendor/autoload.php';
  
 if ( !file_exists("./produkte.json") ) {
 	$Produkte = array();
