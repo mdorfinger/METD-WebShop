@@ -1,0 +1,15 @@
+<?php
+//Wenn kein Produkt ausgewaehlt wurde oder existiert.
+if(!isset($_GET['id']) || !in_array($_GET['id'],$_SESSION['warenkorb'])){
+	print ("Noch kein Produkt gewaehlt/bestellt");
+}
+//ansonsten soll er das Produkt loeschen.
+else{
+	foreach ($_SESSION['warenkorb'] as id => $produkt){
+		if($produkt == $_GET ['id']){
+			unset($_SESSION['warenkorb'][$id]);
+		}
+	}
+	print"<p>Produkt wurde geloescht.</p>";
+}
+?>
