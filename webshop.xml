@@ -19,6 +19,7 @@
   <table name="cart" phpName="cart">
    <column name="userID" type="integer" required="true" primaryKey="true" />
    <column name="productID" type="integer" required="true" primaryKey="true"/>
+   <column name="amount" type ="integer" required="true" defaultValue="1"/>
    
    
     <foreign-key foreignTable="user" phpName="user" refPhpName="cart">
