@@ -34,12 +34,31 @@ class ProduktHandler
 	}
 }
 
+class ProduktHand{
+	function get(){
+		//file oeffnen
+		$entries = json_decode( file_get_contents("./produkte.txt"));
+		
+		//pruefen der Eingabe
+		if(isset($_GET["name"]) &&  isset($_GET["beschreibung"]) && isset($_GET["bewertung"]) && isset($_GET["ID"])){
+			//holt sich das Element mit der ID
+			$entries->getElementById($_GET["ID"]);
+			//schreibt die Daten hinein
+			$daten["name"] = $_GET["name"];
+			$daten["beschreibung"] = $_GET["beschreibung"];
+			$daten["bewertung"] = $_GET["bewertung"];
+		}
+		//schließt und speichert das File
+		file_put_contents("./produkte.txt",json_encode($Produkte));
+	}
+}
+
 ToroHook::add("404", function() {
 	echo "Not found. ATOMLOL";
 });
 
 Toro::serve(array(
-	"/products.php" => "AccountHandler", //PUT - Registrieren
-	"/products/log/show.php" => "AccountHandler", //GET - Anzeigen
+	"/products.php" => "ProduktHandler", //PUT - Registrieren
+	"/products/log/show.php" => "ProduktHand", //GET - Anzeigen
 ));
 ?>
